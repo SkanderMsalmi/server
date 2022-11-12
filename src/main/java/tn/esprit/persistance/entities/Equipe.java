@@ -11,9 +11,14 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -38,10 +43,16 @@ public class Equipe {
 	private String nomEquipe;
 	@Enumerated(EnumType.STRING)
 	private Niveau niveau;
+	
+	
 	@OneToOne
 	private DetailEquipe detailEquipe;
 
 	@ManyToMany(cascade = CascadeType.ALL)
-
+	@JoinTable(
+			name="equipes_etudiants",
+			joinColumns =  @JoinColumn(name="equipe_id"),
+			inverseJoinColumns = @JoinColumn(name="etudiant_id")
+			)
 	private Set<Etudiant> etudiants;
 }

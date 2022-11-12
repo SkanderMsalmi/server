@@ -17,6 +17,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -49,6 +51,9 @@ public class Contrat implements Serializable{
 	private Specialite specialite;
 	private boolean archive;
 	private Integer montantContrat;
-	@ManyToOne
+	
+	@JsonIgnore
+	@ManyToOne(cascade = CascadeType.ALL)
+	
 	Etudiant etudiant;
 }

@@ -17,6 +17,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -42,12 +44,21 @@ public class Etudiant {
 	private String nomE;
 	@Enumerated(EnumType.STRING)
 	private Option op;
+	
+	@JsonIgnore
 	@OneToMany(mappedBy = "etudiant")
 	private Set<Contrat> contrats;
-
+	
+	@JsonIgnore
 	@ManyToMany(mappedBy = "etudiants")
 	private Set<Equipe> equipes;
+	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="departement_id",referencedColumnName = "idDepart" )
 	private Departement departement;
+
+	public void ajouterEtudiantAEquipe(Equipe equipe) {
+		equipes.add(equipe);
+		
+	}
 }

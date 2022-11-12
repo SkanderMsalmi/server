@@ -14,6 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -36,6 +38,8 @@ public class DetailEquipe {
 	private Integer idDetailEquipe;
 	private Integer salle;
 	private String thematique;
+	
+	
 	@OneToOne(mappedBy = "detailEquipe")
 	private Equipe equipe;
 
