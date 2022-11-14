@@ -15,6 +15,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -32,15 +33,18 @@ import lombok.ToString;
 @NoArgsConstructor
 @Table(name = "detailEquipe")
 public class DetailEquipe {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="idDetailEquipe")
 	private Integer idDetailEquipe;
+	
 	private Integer salle;
 	private String thematique;
 	
 	
 	@OneToOne(mappedBy = "detailEquipe")
+	@JsonIgnore
 	private Equipe equipe;
 
 

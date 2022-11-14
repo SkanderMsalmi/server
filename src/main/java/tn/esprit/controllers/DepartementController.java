@@ -3,6 +3,7 @@ package tn.esprit.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,6 +25,7 @@ public class DepartementController {
 	public Departement displayDepartement(int id) {
 		return DServ.retrieveDepartement(id);
 	}
+
 	
 	@GetMapping("/displayDepartements")
 	public List<Departement> displayAllDepartements(){
@@ -44,4 +46,13 @@ public class DepartementController {
 	public void deleteDepartement(int id) {
 		DServ.removeDepartement(id);
 	}
+	
+	//Chaque jour 11h et répéte avec un intervalle de 30 minutes
+	
+	@Scheduled(cron = "0 0/30 11 * * *")
+	@GetMapping("/getAllDepartementsUsingJPQL")
+	public List<Departement> getAllDepartementsUsingJPQL(){
+		return DServ.getAllDepartementsUsingJPQL();
+	}
+	
 }

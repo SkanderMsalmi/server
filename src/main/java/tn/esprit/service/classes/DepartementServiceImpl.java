@@ -50,5 +50,11 @@ public class DepartementServiceImpl implements DepartementService{
 		depRep.deleteById(idDepartement);
 	}
 
+	@Override
+	public List<Departement> getAllDepartementsUsingJPQL() {
+		// TODO Auto-generated method stub
+		return depRep.getAllDepartementsUsingJPQL();
+	}
+
 
 }

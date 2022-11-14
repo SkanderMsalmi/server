@@ -1,5 +1,6 @@
 package tn.esprit.persistance.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
@@ -34,7 +35,12 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="etudiant")
-public class Etudiant {
+public class Etudiant implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idEtudiant")
@@ -45,8 +51,9 @@ public class Etudiant {
 	@Enumerated(EnumType.STRING)
 	private Option op;
 	
-	@JsonIgnore
+
 	@OneToMany(mappedBy = "etudiant")
+	@JsonIgnore
 	private Set<Contrat> contrats;
 	
 	@JsonIgnore
@@ -55,10 +62,7 @@ public class Etudiant {
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="departement_id",referencedColumnName = "idDepart" )
+	
 	private Departement departement;
 
-	public void ajouterEtudiantAEquipe(Equipe equipe) {
-		equipes.add(equipe);
-		
-	}
 }

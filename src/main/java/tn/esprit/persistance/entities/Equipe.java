@@ -46,13 +46,16 @@ public class Equipe {
 	
 	
 	@OneToOne
+	@JsonIgnore
 	private DetailEquipe detailEquipe;
-
+	
+	
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(
 			name="equipes_etudiants",
 			joinColumns =  @JoinColumn(name="equipe_id"),
 			inverseJoinColumns = @JoinColumn(name="etudiant_id")
 			)
+	@JsonIgnore
 	private Set<Etudiant> etudiants;
 }

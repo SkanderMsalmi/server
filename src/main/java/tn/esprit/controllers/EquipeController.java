@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import tn.esprit.persistance.entities.Equipe;
 import tn.esprit.persistance.entities.Etudiant;
 import tn.esprit.persistance.repositories.EtudiantRepository;
+import tn.esprit.service.interfaces.DetailEquipeService;
 import tn.esprit.service.interfaces.EquipeService;
 import tn.esprit.service.interfaces.EtudiantService;
 
@@ -25,6 +26,9 @@ public class EquipeController {
 	
 	@Autowired
 	EtudiantService etudServ;
+	
+	@Autowired
+	DetailEquipeService detServ;
 	
 	EtudiantRepository etudRep;
 	
@@ -40,6 +44,7 @@ public class EquipeController {
 	
 	@PostMapping("/addEquipe")
 	public Equipe addEquipe( @RequestBody Equipe e) {
+		detServ.addDetailEquipe(e.getDetailEquipe());
 		return eServ.addEquipe(e);
 	}
 	

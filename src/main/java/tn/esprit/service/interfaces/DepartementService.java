@@ -10,4 +10,5 @@ public interface DepartementService {
 	Departement updateDepartement(Departement e);
 	Departement retrieveDepartement(Integer idDepartement);
 	void removeDepartement(Integer idDepartement);
+	List<Departement> getAllDepartementsUsingJPQL();
 }

@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -34,6 +36,6 @@ public class Universite {
 	private Integer idUniv;
 	private String nomUniv;
 	@OneToMany(cascade = CascadeType.ALL)
-
+	@JsonIgnore
 	private Set<Departement> deparements;
 }

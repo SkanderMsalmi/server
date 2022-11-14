@@ -3,6 +3,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,7 +32,7 @@ public class EtudiantController {
 	public Etudiant displayStudent(int id) {
 		return eServ.retrieveEtudiant(id);
 	}
-	
+	@Scheduled(fixedDelay  = 60000)
 	@GetMapping("/displayStudents")
 	public List<Etudiant> displayAllStudents(){
 		return eServ.retrieveAllEtudiants();
@@ -52,5 +53,14 @@ public class EtudiantController {
 		eServ.removeEtudiant(id);
 	}
 	
+	@Scheduled(fixedRate = 60000)
+	@GetMapping("/getAllStudentsUsingJPQL")
+	public List<Etudiant> getAllStudentsUsingJPQL(){
+		return eServ.getAllStudnetsUsingJPQL();
+	}
 	
+	@GetMapping("/getStudentByNomUsingJPQL/{nom}")
+	public List<Etudiant> getAllStudentsByNomUsingJPQL(@PathVariable String nom){
+		return eServ.getAllStudentsByNomUsingJPQL(nom);
+	}
 }
