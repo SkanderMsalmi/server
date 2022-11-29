@@ -44,18 +44,18 @@ public class Equipe {
 	@Enumerated(EnumType.STRING)
 	private Niveau niveau;
 	
-	
-	@OneToOne
 	@JsonIgnore
+	@OneToOne
+	
 	private DetailEquipe detailEquipe;
 	
-	
+	@JsonIgnore
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(
 			name="equipes_etudiants",
 			joinColumns =  @JoinColumn(name="equipe_id"),
 			inverseJoinColumns = @JoinColumn(name="etudiant_id")
 			)
-	@JsonIgnore
+	
 	private Set<Etudiant> etudiants;
 }

@@ -2,6 +2,9 @@ package tn.esprit.service.interfaces;
 
 
 import java.util.List;
+
+
+
 import tn.esprit.persistance.entities.Contrat;
 
 
@@ -11,4 +14,6 @@ public interface ContratService {
 	Contrat updateContrat(Contrat e);
 	Contrat retrieveContrat(Integer idContrat);
 	void removeContrat(Integer idContrat);
+	List<Contrat> retrieveContratBySpecialite(String spec);
+	List<Contrat> retrieveContratByMontantContrat( Integer montant);
 }

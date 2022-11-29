@@ -2,6 +2,8 @@ package tn.esprit.service.interfaces;
 
 import java.util.List;
 
+
+
 import tn.esprit.persistance.entities.Departement;
 
 public interface DepartementService {
@@ -10,5 +12,6 @@ public interface DepartementService {
 	Departement updateDepartement(Departement e);
 	Departement retrieveDepartement(Integer idDepartement);
 	void removeDepartement(Integer idDepartement);
-	List<Departement> getAllDepartementsUsingJPQL();
+	List<Departement> getDepartementsByNom(String nomDepart);
+	List<Departement> getDepartementById(Integer idDepart);
 }

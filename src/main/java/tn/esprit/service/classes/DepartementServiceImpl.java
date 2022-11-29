@@ -51,10 +51,19 @@ public class DepartementServiceImpl implements DepartementService{
 	}
 
 	@Override
-	public List<Departement> getAllDepartementsUsingJPQL() {
+	public List<Departement> getDepartementsByNom(String nomDepart) {
 		// TODO Auto-generated method stub
-		return depRep.getAllDepartementsUsingJPQL();
+		return depRep.getDepartementsByNom(nomDepart);
 	}
+
+	@Override
+	public List<Departement> getDepartementById(Integer idDepart) {
+		// TODO Auto-generated method stub
+		return depRep.getDepartementById(idDepart);
+	}
+
+	
+
 
 
 }

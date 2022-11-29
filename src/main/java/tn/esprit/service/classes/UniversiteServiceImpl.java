@@ -50,4 +50,11 @@ public class UniversiteServiceImpl implements UniversiteService{
 		// TODO Auto-generated method stub
 		univRep.deleteById(idUniversite);
 	}
+
+	@Override
+	public int deleteUniversiteByNomUniv(String nomUniv) {
+		// TODO Auto-generated method stub
+		univRep.deleteUniversiteByNomUniv(nomUniv);
+		return 0;
+	}
 }

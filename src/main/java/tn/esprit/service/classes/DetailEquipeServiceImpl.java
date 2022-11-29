@@ -51,4 +51,22 @@ public class DetailEquipeServiceImpl implements DetailEquipeService{
 		detEquipRep.deleteById(idDetailEquipe);
 	}
 
+	@Override
+	public List<DetailEquipe> retrieveContratById(Integer idDetailEquipe) {
+		// TODO Auto-generated method stub
+		return detEquipRep.retrieveContratById(idDetailEquipe);
+	}
+
+	@Override
+	public List<DetailEquipe> retrieveContratBySalle(Integer salle) {
+		// TODO Auto-generated method stub
+		return detEquipRep.retrieveContratBySalle(salle);
+	}
+
+	@Override
+	public List<DetailEquipe> retrieveContratByThematique(String thematique) {
+		// TODO Auto-generated method stub
+		return detEquipRep.retrieveContratByThematique(thematique);
+	}
+
 }

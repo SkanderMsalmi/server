@@ -2,8 +2,10 @@ package tn.esprit.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -43,4 +45,19 @@ public class DetailEquipeController {
 	public void deleteDetailEquipe(int id) {
 		eServ.removeDetailEquipe(id);
 	}
+	
+	@GetMapping("getDetailEquipeById/{idDetailEquipe}")
+	public List<DetailEquipe> retrieveContratById(@PathVariable Integer idDetailEquipe) {
+		return eServ.retrieveContratById(idDetailEquipe);
+	}
+	@GetMapping("getDetailEquipeBySalle/{salle}")
+	public List<DetailEquipe> retrieveContratBySalle(@PathVariable Integer salle){
+		return eServ.retrieveContratBySalle(salle);
+	}
+	
+	@GetMapping("getDetailEquipeByThematique/{thematique}")
+	List<DetailEquipe> retrieveContratByThematique(@PathVariable String thematique){
+		return eServ.retrieveContratByThematique(thematique);
+	}
+	
 }

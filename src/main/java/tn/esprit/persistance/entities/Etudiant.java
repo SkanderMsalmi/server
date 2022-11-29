@@ -59,7 +59,7 @@ public class Etudiant implements Serializable{
 	@JsonIgnore
 	@ManyToMany(mappedBy = "etudiants")
 	private Set<Equipe> equipes;
-	
+	@JsonIgnore
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="departement_id",referencedColumnName = "idDepart" )
 	

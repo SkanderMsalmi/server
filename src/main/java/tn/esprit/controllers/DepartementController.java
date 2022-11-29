@@ -3,9 +3,11 @@ package tn.esprit.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -48,11 +50,14 @@ public class DepartementController {
 	}
 	
 	//Chaque jour 11h et répéte avec un intervalle de 30 minutes
-	
-	@Scheduled(cron = "0 0/30 11 * * *")
-	@GetMapping("/getAllDepartementsUsingJPQL")
-	public List<Departement> getAllDepartementsUsingJPQL(){
-		return DServ.getAllDepartementsUsingJPQL();
+
+	@GetMapping("getDepByNom/{nomDepart}")
+	public List<Departement> getDepartementsByNom(@PathVariable String nomDepart){
+		return DServ.getDepartementsByNom(nomDepart);
 	}
 	
+	@GetMapping("getDepById/{idDepart}")
+	public List<Departement> getDepartementById(@PathVariable Integer idDepart){
+		return DServ.getDepartementById(idDepart);
+	}
 }

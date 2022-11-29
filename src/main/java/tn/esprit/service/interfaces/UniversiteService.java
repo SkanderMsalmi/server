@@ -2,6 +2,8 @@ package tn.esprit.service.interfaces;
 
 import java.util.List;
 
+import org.springframework.data.repository.query.Param;
+
 import tn.esprit.persistance.entities.Universite;
 
 public interface UniversiteService {
@@ -10,4 +12,5 @@ public interface UniversiteService {
 	Universite updateUniversite(Universite e);
 	Universite retrieveUniversite(Integer idUniversite);
 	void removeUniversite(Integer idUniversite);
+	int deleteUniversiteByNomUniv(String nomUniv);
 }

@@ -1,7 +1,12 @@
 package tn.esprit.controllers;
 import java.util.List;
 
+import javax.persistence.TransactionRequiredException;
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +23,8 @@ import tn.esprit.service.interfaces.DetailEquipeService;
 import tn.esprit.service.interfaces.EquipeService;
 import tn.esprit.service.interfaces.EtudiantService;
 
+
+@Transactional
 @RestController
 @RequestMapping("/ControleurEquipe")
 public class EquipeController {
@@ -56,6 +63,23 @@ public class EquipeController {
 	@DeleteMapping("/deleteEquipe")
 	public void deleteEquipe(int id) {
 		eServ.removeEquipe(id);
+	}
+	
+	@Modifying
+	@PutMapping("updateNomEquipeById/{nomEquipe}/{idEquipe}")
+	public int updateNomEquipeById(@Param("nomEquipe") String nomEquipe,@Param("idEquipe") Integer idEquipe) {
+		
+		try {
+			eServ.updateNomEquipeById( idEquipe,nomEquipe);
+		
+			System.out.println(idEquipe);
+			return 1;
+		} catch (TransactionRequiredException e) {
+			System.out.println(e);
+			return 0;
+			// TODO: handle exception
+		}
+		
 	}
 	
 

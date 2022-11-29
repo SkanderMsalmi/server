@@ -35,7 +35,8 @@ public class Universite {
 	@Column(name = "idUniv")
 	private Integer idUniv;
 	private String nomUniv;
-	@OneToMany(cascade = CascadeType.ALL)
 	@JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL)
+
 	private Set<Departement> deparements;
 }

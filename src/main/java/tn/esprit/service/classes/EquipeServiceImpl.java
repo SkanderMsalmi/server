@@ -50,4 +50,12 @@ public class EquipeServiceImpl implements EquipeService{
 		equipRep.deleteById(idEquipe);
 	}
 
+	@Override
+	public int updateNomEquipeById( Integer idEquipe,String nomEquipe) {
+		// TODO Auto-generated method stub
+		
+		equipRep.updateNomEquipeById(nomEquipe, idEquipe);
+		return 0;
+	}
+
 }

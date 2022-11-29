@@ -50,4 +50,16 @@ public class ContratServiceImpl implements ContratService {
 		
 	}
 
+	@Override
+	public List<Contrat> retrieveContratBySpecialite(String spec) {
+		return contRep.retrieveContratBySpecialite(spec);
+		
+	}
+
+	@Override
+	public List<Contrat> retrieveContratByMontantContrat(Integer montant) {
+		// TODO Auto-generated method stub
+		return contRep.retrieveContratByMontantContrat(montant);
+	}
+
 }

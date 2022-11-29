@@ -42,9 +42,9 @@ public class DetailEquipe {
 	private Integer salle;
 	private String thematique;
 	
-	
-	@OneToOne(mappedBy = "detailEquipe")
 	@JsonIgnore
+	@OneToOne(mappedBy = "detailEquipe")
+	
 	private Equipe equipe;
 
 
